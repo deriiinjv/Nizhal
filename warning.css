@@ -1,9 +1,14 @@
 :root {
-    --bg-color: #0d0d0d;
-    --card-bg: #1a1a1a;
+    --bg-color: #0d0914;
+    /* very dark purple-black */
+    --card-bg: #161224;
+    /* slightly lighter purple-black */
     --text-primary: #e0e0e0;
     --text-secondary: #a0a0a0;
-    --accent-color: #ff3333; /* Red/Orange for warning */
+    --accent-color: #ff3333;
+    /* Red for warning */
+    --logo-glow: 0 0 25px rgba(138, 43, 226, 0.5);
+    /* Purple glow for logo */
     --shadow-glow: 0 0 20px rgba(255, 51, 51, 0.3);
 }
 
@@ -27,12 +32,41 @@ body {
     animation: fadeIn 1s ease-out;
 }
 
+.nizhal-logo {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1rem;
+    border-radius: 16px;
+    box-shadow: var(--logo-glow);
+    animation: float 4s ease-in-out infinite;
+}
+
 .shadow-header h1 {
     font-size: 3rem;
     letter-spacing: 0.5rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #a855f7, #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    /* Alternative to -webkit-text-fill-color */
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .shadow-header p {
@@ -60,7 +94,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,51,51,0.05) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(255, 51, 51, 0.05) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -125,12 +159,30 @@ h2 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
