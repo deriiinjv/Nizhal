@@ -27,14 +27,21 @@ app.add_middleware(
 MODEL_PATH = "phishing_model.pkl"
 model = None
 
+@app.get("/")
+def home():
+    return {'message': 'Welcome to the Nizhal Phishing Detection API.'}
+
 @app.on_event("startup")
 def load_model():
     global model
-    if os.path.exists(MODEL_PATH):
-        model = joblib.load(MODEL_PATH)
-        print(f"Model loaded successfully from {MODEL_PATH}")
-    else:
-        print(f"Warning: Model not found at {MODEL_PATH}")
+    try:
+        if os.path.exists(MODEL_PATH):
+            model = joblib.load(MODEL_PATH)
+            print(f"Model loaded successfully from {MODEL_PATH}")
+        else:
+            print(f"Warning: Model not found at {MODEL_PATH}")
+    except Exception as e:
+        print(f"Error loading model: {e}")
 
 class URLRequest(BaseModel):
     url: str
